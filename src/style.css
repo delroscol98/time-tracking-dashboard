@@ -22,11 +22,11 @@
 }
 
 .text-md {
-  font-size: max(2.4rem, 2.778vw, 4rem);
+  font-size: clamp(2.4rem, 6.4vw, 4rem);
 }
 
 .text-lg {
-  font-size: max(3.2rem, 3.889vw, 5.6rem);
+  font-size: clamp(3.2rem, 8.533vw, 5.6rem);
 }
 
 /* Color variables */
