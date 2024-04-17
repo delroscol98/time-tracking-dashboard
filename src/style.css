@@ -2,18 +2,31 @@
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 
 .font-light {
-  font-family: "Rubik", sans-serif;
   font-weight: 300;
 }
 
 .font-normal {
-  font-family: "Rubik", sans-serif;
   font-weight: 400;
 }
 
 .font-bold {
-  font-family: "Rubik", sans-serif;
   font-weight: 500;
+}
+
+.text-base {
+  font-size: 1.8rem;
+}
+
+.text-sm {
+  font-size: 1.5rem;
+}
+
+.text-md {
+  font-size: max(2.4rem, 2.778vw, 4rem);
+}
+
+.text-lg {
+  font-size: max(3.2rem, 3.889vw, 5.6rem);
 }
 
 /* Color variables */
@@ -45,8 +58,47 @@
 
 html {
   font-size: 62.5%;
+  font-family: "Rubik", sans-serif;
+  background: var(--neutral-very-dark-blue);
+  color: hsl(0, 0%, 100%);
 }
 
 body {
   min-height: 100vh;
 }
+
+/* Utility Classes */
+
+.container {
+  border: 1px solid red;
+  border-radius: 1.5rem;
+}
+
+.user-background {
+  background: var(--primary-blue);
+}
+
+.work-background {
+  background: var(--primary-light-red-work);
+}
+
+.play-background {
+  background: var(--primary-soft-blue);
+}
+
+.study-background {
+  background: var(--primary-light-red-study);
+}
+
+.exercise-background {
+  background: var(--primary-lime-green);
+}
+
+.social-background {
+  background: var(--primary-violet);
+}
+
+.self-care-background {
+  background: var(--primary-soft-orange);
+}
+/* Custom Styling */
