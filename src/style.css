@@ -90,14 +90,16 @@ body {
 .container {
   border-radius: 1.5rem;
   height: 16rem;
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+  position: relative;
 }
 
-.container-main {
-  background: var(--neutral-dark-blue);
-  border-radius: 1.5rem;
-  height: 81.557%;
+.icon {
+  position: absolute;
+  align-self: start;
+  justify-self: end;
 }
 
 .work-background {
@@ -130,12 +132,43 @@ body {
   border-radius: 1.5rem;
 }
 
+.container-main {
+  background: var(--neutral-dark-blue);
+  border-radius: 1.5rem;
+  height: 12.2rem;
+  z-index: 1;
+}
+
 /* Custom Styling */
 main {
   width: min(87.2%, 111rem);
   display: grid;
   gap: 2.4rem;
   margin: 8.1rem auto;
+}
+
+.work-icon {
+  transform: translate(-2rem, -1rem);
+}
+
+.play-icon {
+  transform: translate(-2rem, -0.5rem);
+}
+
+.study-icon {
+  transform: translate(-2rem, -0.7rem);
+}
+
+.exercise-icon {
+  transform: translate(-2rem, -0.1rem);
+}
+
+.social-icon {
+  transform: translate(-2rem, -1.5rem);
+}
+
+.self-care-icon {
+  transform: translate(-2rem, -1.1rem);
 }
 
 @media screen and (min-width: 768px) {
@@ -151,5 +184,9 @@ main {
   .user-container {
     grid-row: 1 / 3;
     height: 51.8rem;
+  }
+
+  .container-main {
+    height: 19.9rem;
   }
 }
