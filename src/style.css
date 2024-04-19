@@ -165,6 +165,7 @@ body {
 .container-main:hover,
 .container-main:active {
   background: hsl(235, 41%, 34%);
+  transition: 0.3s;
 }
 
 button {
