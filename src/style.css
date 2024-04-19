@@ -205,6 +205,27 @@ main {
 }
 
 @media screen and (min-width: 768px) {
+  /* User Utility Classes */
+
+  .user-container {
+    grid-row: 1 / 3;
+    height: 51.8rem;
+  }
+
+  /* Utility Classes */
+  .user-background {
+    flex-direction: column;
+    gap: 4.3rem;
+    padding-bottom: 8.5rem;
+  }
+
+  .user-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.1rem;
+    padding-bottom: 4.25rem;
+  }
+  /* Custom Styling */
   main {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -212,11 +233,6 @@ main {
 
   .container {
     height: -webkit-fill-available;
-  }
-
-  .user-container {
-    grid-row: 1 / 3;
-    height: 51.8rem;
   }
 
   .container-main {
