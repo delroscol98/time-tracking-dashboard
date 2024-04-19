@@ -173,10 +173,8 @@ body {
   cursor: pointer;
 }
 
-.container-main:hover,
 .container-main:active {
   background: hsl(235, 41%, 34%);
-  transition: 0.3s;
 }
 
 button {
@@ -210,6 +208,15 @@ button.active {
 
 .data-header {
   padding: 2.8rem 0 0.6rem;
+}
+
+.data-header > img {
+  height: fit-content;
+  align-self: center;
+}
+
+.data-header > img:hover {
+  cursor: pointer;
 }
 
 .data-display {

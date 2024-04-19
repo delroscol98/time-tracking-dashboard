@@ -9,7 +9,7 @@ fetch("./src/data.json")
   )
   .then((data) => {
     //Render title data
-    const titles = document.querySelectorAll("#title");
+    const titles = document.querySelectorAll("#container-title");
     for (let i = 0; i < titles.length; i++) {
       titles[i].innerText = data[i].title;
     }
