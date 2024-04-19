@@ -116,6 +116,16 @@ body {
   position: relative;
 }
 
+.container:hover {
+  transform: translateY(-0.5rem);
+  transition: transform 0.5s ease;
+}
+
+.container:not(:hover) {
+  transform: translateY(0);
+  transition: transform 0.5s ease;
+}
+
 .icon {
   position: absolute;
   align-self: start;
@@ -175,8 +185,16 @@ button {
   color: var(--neutral-desaturated-blue);
 }
 
-button:hover {
+.user-buttons button:hover {
   cursor: pointer;
+  color: white;
+  transform: translateY(-0.5rem);
+  transition: transform 0.5s ease;
+}
+
+.user-buttons button:not(:hover) {
+  transform: translateY(0rem);
+  transition: transform 0.5s ease;
 }
 
 button.active {
