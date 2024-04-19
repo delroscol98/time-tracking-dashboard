@@ -158,6 +158,15 @@ body {
   z-index: 1;
 }
 
+.container-main:hover {
+  cursor: pointer;
+}
+
+.container-main:hover,
+.container-main:active {
+  background: hsl(235, 41%, 34%);
+}
+
 button {
   border: none;
   background: none;
