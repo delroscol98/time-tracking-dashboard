@@ -172,11 +172,25 @@ button.active {
   color: var(--neutral-white);
 }
 
-.data-header {
+.data-width {
   width: 85.321%;
   display: flex;
   justify-content: space-between;
-  margin: 2.8rem auto 0.6rem;
+  margin: auto;
+}
+
+.data-header {
+  padding: 2.8rem 0 0.6rem;
+}
+
+.data-display {
+  display: flex;
+  padding-bottom: 2.8rem;
+}
+
+.data-last-week {
+  align-self: center;
+  color: var(--neutral-pale-blue);
 }
 
 /* Custom Styling */
@@ -236,6 +250,15 @@ main {
   .data-header {
     width: 76.471%;
     margin-bottom: 2.8rem;
+  }
+
+  .data-display {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .data-last-week {
+    align-self: flex-start;
   }
   /* Custom Styling */
   main {
