@@ -44,6 +44,7 @@
   --neutral-dark-blue: hsl(235, 45%, 20%);
   --neutral-desaturated-blue: hsl(235, 45%, 61%);
   --neutral-pale-blue: hsl(236, 100%, 87%);
+  --neutral-white: hsl(0, 0%, 100%);
 }
 
 /* CSS boilerplate */
@@ -60,7 +61,7 @@ html {
   font-size: 62.5%;
   font-family: "Rubik", sans-serif;
   background: var(--neutral-very-dark-blue);
-  color: hsl(0, 0%, 100%);
+  color: var(--neutral-white);
 }
 
 body {
@@ -69,20 +70,38 @@ body {
 
 /* User Utility Classes */
 
-.user-container {
-  height: 20.3rem;
-}
-
-.user-background {
-  background: var(--primary-blue);
-  height: 65.517%;
-  border-radius: 1.5rem;
-}
-
 .user-main {
   background: var(--neutral-dark-blue);
   border-radius: 1.5rem;
-  height: inherit;
+}
+.user-background {
+  background: var(--primary-blue);
+  border-radius: 1.5rem;
+  display: flex;
+  gap: 2rem;
+  padding: 3.5rem 0 3.5rem 3.2rem;
+}
+
+.user-background img {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  border: 3px solid var(--neutral-white);
+}
+
+.user-background h1 {
+  color: var(--neutral-pale-blue);
+  align-self: center;
+}
+
+.user-background h1 span {
+  color: var(--neutral-white);
+}
+
+.user-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 2.4rem 2.8rem;
 }
 
 /* Utility Classes */
@@ -137,6 +156,20 @@ body {
   border-radius: 1.5rem;
   height: 12.2rem;
   z-index: 1;
+}
+
+button {
+  border: none;
+  background: none;
+  color: var(--neutral-desaturated-blue);
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  color: var(--neutral-white);
 }
 
 /* Custom Styling */
