@@ -1,31 +1,59 @@
-const userBtnHandler = () => {
-  const userBtns = document.querySelectorAll(".user-buttons button");
-  userBtns.forEach((btn) =>
-    btn.addEventListener("click", (e) => {
-      const activeBtn = document.querySelector("button.active");
-      const targetbtn = e.target;
-      if (targetbtn.classList.contains("active")) {
-        return;
-      }
-      activeBtn.classList.remove("active");
-      targetbtn.classList.add("active");
-    })
-  );
-};
+//Fetch data
+fetch("./data.json")
+  .then(
+    (res) => {
+      if (res.ok) return res.json();
+      throw new Error("Unable to retrieve data.");
+    },
+    (networkError) => console.log(networkError.message)
+  )
+  .then((data) => {
+    //Render title data
+    const titles = document.querySelectorAll("#title");
+    for (let i = 0; i < titles.length; i++) {
+      titles[i].innerText = data[i].title;
+    }
 
-const dataHandler = async () => {
-  //Retrieve data
-  const response = await fetch("./data.json");
-  const data = await response.json();
+    //Handle user buttons
+    const userBtns = document.querySelectorAll(".user-buttons button");
+    userBtns.forEach((btn) =>
+      btn.addEventListener("click", (e) => {
+        //Add an active class to the targetBtn and removes active class from other button
+        const activeBtn = document.querySelector("button.active");
+        const targetbtn = e.target;
+        if (targetbtn === activeBtn) {
+          return;
+        }
+        activeBtn.classList.remove("active");
+        targetbtn.classList.add("active");
 
-  const currentData = document.querySelectorAll("#current");
-  const prevData = document.querySelectorAll("#previous");
-  console.log(currentData, prevData);
-};
+        //Select elements to render timeframe data
+        const currentData = document.querySelectorAll("#current");
+        const prevData = document.querySelectorAll("#previous");
 
-const init = () => {
-  userBtnHandler();
-  dataHandler();
-};
+        //Render data if the daily button is clicked
+        if (targetbtn.innerText === "Daily") {
+          for (let i = 0; i < data.length; i++) {
+            currentData[i].innerText = data[i].timeframes.daily.current;
+            prevData[i].innerText = data[i].timeframes.daily.previous;
+          }
+        }
 
-init();
+        //Render data if the weekly button is clicked
+        if (targetbtn.innerText === "Weekly") {
+          for (let i = 0; i < data.length; i++) {
+            currentData[i].innerText = data[i].timeframes.weekly.current;
+            prevData[i].innerText = data[i].timeframes.weekly.previous;
+          }
+        }
+
+        //Render data if the monthly button is clicked
+        if (targetbtn.innerText === "Monthly") {
+          for (let i = 0; i < data.length; i++) {
+            currentData[i].innerText = data[i].timeframes.monthly.current;
+            prevData[i].innerText = data[i].timeframes.monthly.previous;
+          }
+        }
+      })
+    );
+  });
