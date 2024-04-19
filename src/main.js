@@ -13,14 +13,19 @@ const userBtnHandler = () => {
   );
 };
 
-const getData = async () => {
+const dataHandler = async () => {
+  //Retrieve data
   const response = await fetch("./data.json");
   const data = await response.json();
-  return data;
+
+  const currentData = document.querySelectorAll("#current");
+  const prevData = document.querySelectorAll("#previous");
+  console.log(currentData, prevData);
 };
 
 const init = () => {
   userBtnHandler();
+  dataHandler();
 };
 
 init();
