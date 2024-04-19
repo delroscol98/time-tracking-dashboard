@@ -168,8 +168,15 @@ button:hover {
   cursor: pointer;
 }
 
-button:active {
+button.active {
   color: var(--neutral-white);
+}
+
+.data-header {
+  width: 85.321%;
+  display: flex;
+  justify-content: space-between;
+  margin: 2.8rem auto 0.6rem;
 }
 
 /* Custom Styling */
@@ -225,10 +232,20 @@ main {
     gap: 2.1rem;
     padding-bottom: 4.25rem;
   }
+
+  .data-header {
+    width: 76.471%;
+    margin-bottom: 2.8rem;
+  }
   /* Custom Styling */
   main {
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .container {
