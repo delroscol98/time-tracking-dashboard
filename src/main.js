@@ -1,5 +1,5 @@
 //Fetch data
-fetch("./data.json")
+fetch("./src/data.json")
   .then(
     (res) => {
       if (res.ok) return res.json();
