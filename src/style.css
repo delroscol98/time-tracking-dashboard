@@ -133,32 +133,38 @@ body {
 }
 
 .work-background {
-  background: var(--primary-light-red-work);
+  background: linear-gradient(
+    var(--primary-light-red-work) 50%,
+    transparent 50%
+  );
   border-radius: 1.5rem;
 }
 
 .play-background {
-  background: var(--primary-soft-blue);
+  background: linear-gradient(var(--primary-soft-blue) 50%, transparent 50%);
   border-radius: 1.5rem;
 }
 
 .study-background {
-  background: var(--primary-light-red-study);
+  background: linear-gradient(
+    var(--primary-light-red-study) 50%,
+    transparent 50%
+  );
   border-radius: 1.5rem;
 }
 
 .exercise-background {
-  background: var(--primary-lime-green);
+  background: linear-gradient(var(--primary-lime-green) 50%, transparent 50%);
   border-radius: 1.5rem;
 }
 
 .social-background {
-  background: var(--primary-violet);
+  background: linear-gradient(var(--primary-violet) 50%, transparent 50%);
   border-radius: 1.5rem;
 }
 
 .self-care-background {
-  background: var(--primary-soft-orange);
+  background: linear-gradient(var(--primary-soft-orange) 50%, transparent 50%);
   border-radius: 1.5rem;
 }
 
