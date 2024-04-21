@@ -1,59 +1,73 @@
-//Fetch data
-fetch("./src/data.json")
-  .then(
-    (res) => {
-      if (res.ok) return res.json();
-      throw new Error("Unable to retrieve data.");
-    },
-    (networkError) => console.log(networkError.message)
-  )
-  .then((data) => {
-    //Render title data
-    const titles = document.querySelectorAll("#container-title");
-    for (let i = 0; i < titles.length; i++) {
-      titles[i].innerText = data[i].title;
+const fetchData = async (url) => {
+  try {
+    const res = await fetch(url);
+    if (res.ok) {
+      const data = await res.json();
+      return data;
     }
+    throw new Error("Unable to retrieve data.");
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-    //Handle user buttons
-    const userBtns = document.querySelectorAll(".user-buttons button");
-    userBtns.forEach((btn) =>
-      btn.addEventListener("click", (e) => {
-        //Add an active class to the targetBtn and removes active class from other button
-        const activeBtn = document.querySelector("button.active");
-        const targetbtn = e.target;
-        if (targetbtn === activeBtn) {
-          return;
-        }
-        activeBtn.classList.remove("active");
-        targetbtn.classList.add("active");
+const titleHandler = (data) => {
+  const containerTitles = document.querySelectorAll("#container-title");
+  for (let i = 0; i < data.length; i++) {
+    containerTitles[i].innerText = data[i].title;
+  }
+};
 
-        //Select elements to render timeframe data
-        const currentData = document.querySelectorAll("#current");
-        const prevData = document.querySelectorAll("#previous");
+const activeUserBtnHandler = (targetBtn) => {
+  const activeBtn = document.querySelector("button.active");
+  if (targetBtn === activeBtn) {
+    return;
+  }
+  activeBtn.classList.remove("active");
+  targetBtn.classList.add("active");
+};
 
-        //Render data if the daily button is clicked
-        if (targetbtn.innerText === "Daily") {
-          for (let i = 0; i < data.length; i++) {
-            currentData[i].innerText = data[i].timeframes.daily.current;
-            prevData[i].innerText = data[i].timeframes.daily.previous;
-          }
-        }
+const dataHandler = (targetBtn, data) => {
+  const current = document.querySelectorAll("#current");
+  const previous = document.querySelectorAll("#previous");
 
-        //Render data if the weekly button is clicked
-        if (targetbtn.innerText === "Weekly") {
-          for (let i = 0; i < data.length; i++) {
-            currentData[i].innerText = data[i].timeframes.weekly.current;
-            prevData[i].innerText = data[i].timeframes.weekly.previous;
-          }
-        }
+  for (let i = 0; i < current.length; i++) {
+    const dailyData = data[i].timeframes.daily;
+    const weeklyData = data[i].timeframes.weekly;
+    const monthlyData = data[i].timeframes.monthly;
 
-        //Render data if the monthly button is clicked
-        if (targetbtn.innerText === "Monthly") {
-          for (let i = 0; i < data.length; i++) {
-            currentData[i].innerText = data[i].timeframes.monthly.current;
-            prevData[i].innerText = data[i].timeframes.monthly.previous;
-          }
-        }
-      })
-    );
-  });
+    targetBtn.innerText === "Daily"
+      ? ((current[i].innerText = dailyData.current),
+        (previous[i].innerText = dailyData.previous))
+      : null;
+
+    targetBtn.innerText === "Weekly"
+      ? ((current[i].innerText = weeklyData.current),
+        (previous[i].innerText = weeklyData.previous))
+      : null;
+
+    targetBtn.innerText === "Monthly"
+      ? ((current[i].innerText = monthlyData.current),
+        (previous[i].innerText = monthlyData.previous))
+      : null;
+  }
+};
+
+const userBtnHandler = (data) => {
+  const userBtns = document.querySelectorAll(".user-buttons button");
+  userBtns.forEach((btn) =>
+    btn.addEventListener("click", (e) => {
+      const targetBtn = e.target;
+      activeUserBtnHandler(targetBtn);
+      dataHandler(targetBtn, data);
+    })
+  );
+};
+
+const init = async () => {
+  const data = await fetchData("./src/data.json");
+  titleHandler(data);
+  userBtnHandler(data);
+};
+
+init();
